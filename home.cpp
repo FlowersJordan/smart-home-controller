@@ -44,9 +44,23 @@ int main() {
 
     Room rooms[4] = {livingRoom, bedroom, kitchen, bathroom};
 
+    string roomSearch;
+    cout << "Enter Room Name: " << "\n";
+
+    getline(cin, roomSearch);
+
+    bool found = false;
+    
     for (int i = 0; i < 4; i++) {
-        cout << boolalpha << rooms[i].roomName << " fan needed: " << checkFan(rooms[i]) << endl;
+        if (rooms[i].roomName == roomSearch) {
+            printRoom(rooms[i]);
+            found = true;
+        }
     }
+    if (!found) {
+        cout << "Room not found\n";
+    }
+
 
     return 0;
 }
