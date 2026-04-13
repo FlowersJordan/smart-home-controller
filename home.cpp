@@ -54,21 +54,60 @@ int main() {
 
     Room rooms[4] = {livingRoom, bedroom, kitchen, bathroom};
 
-    string roomSearch;
-    cout << "Enter Room Name: " << "\n";
+    while(true) {
+        cout << "1. Search for a room:\n";
+        cout << "2. Toggle Room Light\n";
+        cout << "3. Check Fan Alert\n";
+        cout << "4. Exit\n";
+        
+        int choice;
+        cin >> choice;
+        cin.ignore(); // Clear the input buffer
 
-    getline(cin, roomSearch);
-
-    bool found = false;
-    
-    for (int i = 0; i < 4; i++) {
-        if (rooms[i].roomName == roomSearch) {
-            printRoom(rooms[i]);
-            found = true;
+        if (choice == 1) {
+            cout << "Enter room name: ";
+            string name;
+            getline(cin, name);
+            bool found = false;
+            for (int i = 0; i < 4; i++) {
+                if (rooms[i].roomName == name) {
+                    printRoom(rooms[i]);
+                    found = true;
+                }
+            }
+            if (!found) {
+                cout << "Room not found\n";
+            }
         }
-    }
-    if (!found) {
-        cout << "Room not found\n";
+        else if (choice == 2) {
+            cout << "Enter room name: ";
+            string name;
+            getline(cin, name);
+            bool found = false;
+            for (int i = 0; i < 4; i++) {
+                if (rooms[i].roomName == name) {
+                    rooms[i].setLight(!rooms[i].lightOn);
+                    printRoom(rooms[i]);
+                    found = true;
+                }
+            }
+            if (!found) {
+                cout << "Room not found\n";
+            }
+        }
+        else if (choice == 3) {
+            for (int i = 0; i < 4; i++) {
+                if (checkFan(rooms[i])) {
+                    cout << rooms[i].roomName << " has a fan alert!\n";
+                }
+            }
+        }
+
+        else if (choice == 4){
+            break;
+        }
+
+
     }
 
 
