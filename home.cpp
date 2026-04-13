@@ -20,6 +20,16 @@ public:
         fanOn = fan;
         fanSpeed = speed;
     }
+
+    void setLight(bool light) {
+        lightOn = light;
+    }
+
+    void setFanSpeed(int speed) {
+        if (speed >= 0 && speed <= 5) {
+            fanSpeed = speed;
+        }
+    }
         
 };
 
