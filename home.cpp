@@ -34,8 +34,8 @@ public:
 };
 
 
-void printRoom(Room room) {
-    cout << boolalpha << room.roomName << " " << room.lightOn << " " << room.temperature << " " << room.humidity << " " << room.fanOn << " " << room.fanSpeed << endl;
+void printRoom(Room* room) {
+    cout << boolalpha << room->roomName << " " << room->lightOn << " " << room->temperature << " " << room->humidity << " " << room->fanOn << " " << room->fanSpeed << endl;
 }
 
 bool checkFan(Room room) {
@@ -71,7 +71,7 @@ int main() {
             bool found = false;
             for (int i = 0; i < 4; i++) {
                 if (rooms[i].roomName == name) {
-                    printRoom(rooms[i]);
+                    printRoom(&rooms[i]);
                     found = true;
                 }
             }
@@ -87,7 +87,7 @@ int main() {
             for (int i = 0; i < 4; i++) {
                 if (rooms[i].roomName == name) {
                     rooms[i].setLight(!rooms[i].lightOn);
-                    printRoom(rooms[i]);
+                    printRoom(&rooms[i]);
                     found = true;
                 }
             }
